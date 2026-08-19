@@ -1,0 +1,115 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.28 841.89]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+>>
+>>
+>>
+endobj
+4 0 obj
+<<
+/Length 750
+>>
+stream
+BT
+/F1 20 Tf
+50 780 Td
+(DIMAS AHMAD NOORSAID) Tj
+/F2 11 Tf
+0 -24 Td
+(Computer Engineering Graduate | IT Support | Business Analysis) Tj
+0 -16 Td
+(Location: Jakarta, Indonesia | Email: Dimasars79@gmail.com | Telkom University) Tj
+0 -14 Td
+(LinkedIn: linkedin.com/in/dimasars | GitHub: github.com/Dimasars79) Tj
+0 -30 Td
+/F1 14 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -18 Td
+/F2 10 Tf
+(Computer Engineering graduate from Telkom University with strong foundational knowledge in) Tj
+0 -14 Td
+(hardware, networking, systems, IT support, requirement gathering, and process modeling.) Tj
+0 -30 Td
+/F1 14 Tf
+(EXPERIENCE) Tj
+0 -18 Td
+/F1 11 Tf
+(Business Analyst Intern - CNT IT Corporation) Tj
+/F2 10 Tf
+0 -14 Td
+(July 2024 - August 2024 | Indonesia) Tj
+0 -14 Td
+(- Analyzed business requirements and translated into structured system documentation.) Tj
+0 -14 Td
+(- Modeled business processes with Sparx Enterprise Architect and BPMN 2.0.) Tj
+0 -14 Td
+(- Collaborated with stakeholders for requirement gathering and validation.) Tj
+0 -30 Td
+/F1 14 Tf
+(EDUCATION) Tj
+0 -18 Td
+/F1 11 Tf
+(Bachelor of Computer Engineering - Telkom University, Bandung) Tj
+0 -30 Td
+/F1 14 Tf
+(CORE SKILLS) Tj
+0 -18 Td
+/F2 10 Tf
+(IT Support, Hardware/Software Troubleshooting, Computer Networking, Git, GitHub,) Tj
+0 -14 Td
+(Business Analysis, BPMN, Sparx Enterprise Architect, System Documentation, ESP32 IoT.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000266 00000 n 
+0000001086 00000 n 
+0000001167 00000 n 
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+1243
+%%EOF
