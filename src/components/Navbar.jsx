@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Menu, X, FileText, Download } from 'lucide-react';
+import { Menu, X, FileText, Download, Sun, Moon } from 'lucide-react';
 
-export default function Navbar({ onOpenCvModal }) {
+export default function Navbar({ onOpenCvModal, theme, onToggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -91,8 +91,24 @@ export default function Navbar({ onOpenCvModal }) {
               ))}
             </ul>
 
-            {/* Actions & Mobile Button */}
+            {/* Actions: Theme Toggle & CV Button & Mobile Toggle */}
             <div className="nav-actions">
+              {/* Theme Toggle Button */}
+              <button
+                type="button"
+                className="theme-toggle-btn"
+                onClick={onToggleTheme}
+                title={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                aria-label="Toggle Theme Mode"
+                id="btn-theme-toggle"
+              >
+                {theme === 'dark' ? (
+                  <Sun size={19} style={{ color: 'var(--accent-amber)' }} />
+                ) : (
+                  <Moon size={19} style={{ color: 'var(--accent-indigo)' }} />
+                )}
+              </button>
+
               <button 
                 type="button"
                 className="btn btn-secondary btn-sm btn-cv-nav"
@@ -136,6 +152,26 @@ export default function Navbar({ onOpenCvModal }) {
         </ul>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          {/* Mobile Theme Switcher */}
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={onToggleTheme}
+            style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '0.5rem' }}
+          >
+            {theme === 'dark' ? (
+              <>
+                <Sun size={18} style={{ color: 'var(--accent-amber)' }} />
+                <span>Switch to Light Mode</span>
+              </>
+            ) : (
+              <>
+                <Moon size={18} style={{ color: 'var(--accent-indigo)' }} />
+                <span>Switch to Dark Mode</span>
+              </>
+            )}
+          </button>
+
           <button 
             type="button"
             className="btn btn-primary"

@@ -16,6 +16,23 @@ export default function App() {
   const [isCvModalOpen, setIsCvModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Initialize theme from localStorage or default to 'dark'
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('dimas-portfolio-theme');
+    if (savedTheme) return savedTheme;
+    return 'dark';
+  });
+
+  // Apply theme to document root whenever it changes
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('dimas-portfolio-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   // Close modals on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -30,8 +47,12 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {/* Sticky Navigation Bar */}
-      <Navbar onOpenCvModal={() => setIsCvModalOpen(true)} />
+      {/* Sticky Navigation Bar with Theme Switcher */}
+      <Navbar 
+        onOpenCvModal={() => setIsCvModalOpen(true)} 
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       {/* Main Content Sections */}
       <main id="main-content">

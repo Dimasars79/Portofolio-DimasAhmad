@@ -166,13 +166,20 @@ export default function Hero({ onOpenCvModal }) {
           {/* Right Column: Interactive Profile & Tech Card */}
           <div className="hero-visual">
             <div className="hero-card">
-              {/* Profile Avatar / Monogram */}
+              {/* Profile Avatar / Real Photo */}
               <div className="hero-avatar-wrapper">
                 <div className="hero-avatar" title="Dimas Ahmad Noorsaid">
-                  <span>DA</span>
+                  <img 
+                    src="/profile.jpg" 
+                    alt="Dimas Ahmad Noorsaid - Computer Engineering Graduate" 
+                    className="hero-avatar-img"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
                 </div>
-                <div className="avatar-badge" title="Telkom University Graduate">
-                  <CheckCircle2 size={16} />
+                <div className="avatar-badge" title="Telkom University Graduate • Verified Profile">
+                  <CheckCircle2 size={18} />
                 </div>
               </div>
 
