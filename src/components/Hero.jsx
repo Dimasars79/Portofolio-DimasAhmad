@@ -1,9 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, MapPin, ArrowRight, Download, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin, ArrowRight, Download, CheckCircle2, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function Hero({ onOpenCvModal }) {
+  const roles = [
+    "Dimas Ars",
+    "IT Support Specialist",
+    "Business Analyst",
+    "Computer Engineering Graduate",
+    "System Analyst"
+  ];
+
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(120);
+
+  useEffect(() => {
+    const handleType = () => {
+      const fullText = roles[roleIndex];
+
+      if (!isDeleting) {
+        // Typing forward
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+
+        // When complete word is typed
+        if (currentText === fullText) {
+          // Pause at full text
+          setTimeout(() => setIsDeleting(true), 2000);
+          setTypingSpeed(60);
+          return;
+        }
+      } else {
+        // Deleting backward
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+
+        // When word is completely erased
+        if (currentText === '') {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+          setTypingSpeed(120);
+          return;
+        }
+      }
+    };
+
+    const timer = setTimeout(handleType, isDeleting ? 45 : typingSpeed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, roleIndex, typingSpeed, roles]);
+
   const scrollToProjects = (e) => {
     e.preventDefault();
     const el = document.getElementById('projects');
@@ -24,10 +70,17 @@ export default function Hero({ onOpenCvModal }) {
               <span>Available for Opportunities • {personalInfo.location}</span>
             </div>
 
-            {/* Headline */}
+            {/* Animated Headline */}
             <h1 className="hero-title">
-              {personalInfo.headline.split("Dimas Ars")[0]}
-              <span>Dimas Ars</span>
+              <span className="hero-greeting-line">
+                Hello, I'm <span className="wave-emoji" role="img" aria-label="waving hand">👋</span>
+              </span>
+              <span className="hero-name-line">
+                <span className="animated-gradient-name" id="typewriter-headline">
+                  {currentText}
+                </span>
+                <span className="typewriter-caret" aria-hidden="true">|</span>
+              </span>
             </h1>
 
             {/* Subtitle */}
