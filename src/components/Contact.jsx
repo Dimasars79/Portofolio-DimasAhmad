@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, Github, Linkedin, MapPin, Send, Copy, Check, ExternalLink, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Send, Copy, Check, ExternalLink, MessageSquare } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -105,7 +106,7 @@ export default function Contact() {
                 >
                   <div className="channel-left">
                     <div className="channel-icon" style={{ color: 'var(--accent-indigo)', background: 'rgba(129, 140, 248, 0.1)' }}>
-                      <Linkedin size={18} />
+                      <LinkedinIcon size={18} />
                     </div>
                     <div>
                       <div className="channel-title">LinkedIn Profile</div>
@@ -125,7 +126,7 @@ export default function Contact() {
                 >
                   <div className="channel-left">
                     <div className="channel-icon">
-                      <Github size={18} />
+                      <GithubIcon size={18} />
                     </div>
                     <div>
                       <div className="channel-title">GitHub Repositories</div>

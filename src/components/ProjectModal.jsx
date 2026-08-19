@@ -1,5 +1,6 @@
 import React from 'react';
-import { X, CheckCircle2, Cpu, Github, ExternalLink, ArrowRight, Layers, Lock } from 'lucide-react';
+import { X, CheckCircle2, Cpu, ExternalLink, Layers, Lock } from 'lucide-react';
+import { GithubIcon } from './SocialIcons';
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
@@ -100,7 +101,7 @@ export default function ProjectModal({ project, onClose }) {
               rel="noopener noreferrer"
               className="btn btn-primary btn-sm"
             >
-              <Github size={16} />
+              <GithubIcon size={16} />
               <span>Explore on GitHub</span>
               <ExternalLink size={14} />
             </a>

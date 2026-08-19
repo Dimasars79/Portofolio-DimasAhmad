@@ -1,6 +1,7 @@
 import React from 'react';
 import { projectsData } from '../data/portfolioData';
-import { FolderGit2, Cpu, ExternalLink, Github, CheckCircle2, Info, ArrowUpRight, Lock } from 'lucide-react';
+import { FolderGit2, Info, ArrowUpRight, Lock, CheckCircle2 } from 'lucide-react';
+import { GithubIcon } from './SocialIcons';
 
 export default function Projects({ onSelectProject }) {
   return (
@@ -86,7 +87,7 @@ export default function Projects({ onSelectProject }) {
                     className="btn btn-outline btn-sm"
                     id={`btn-github-${project.id}`}
                   >
-                    <Github size={15} />
+                    <GithubIcon size={15} />
                     <span>GitHub Profile</span>
                     <ArrowUpRight size={14} />
                   </a>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { ArrowUp, Github, Linkedin, Mail, MapPin, Heart, Code2 } from 'lucide-react';
+import { ArrowUp, Mail, MapPin } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function Footer() {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -93,7 +94,7 @@ export default function Footer() {
               title="GitHub"
               aria-label="GitHub"
             >
-              <Github size={16} />
+              <GithubIcon size={16} />
             </a>
             <a
               href={personalInfo.linkedin}
@@ -104,7 +105,7 @@ export default function Footer() {
               title="LinkedIn"
               aria-label="LinkedIn"
             >
-              <Linkedin size={16} />
+              <LinkedinIcon size={16} />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}

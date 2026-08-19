@@ -1,6 +1,7 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Github, Linkedin, Mail, MapPin, ArrowRight, Download, CheckCircle2, Terminal } from 'lucide-react';
+import { Mail, MapPin, ArrowRight, Download, CheckCircle2 } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function Hero({ onOpenCvModal }) {
   const scrollToProjects = (e) => {
@@ -77,7 +78,7 @@ export default function Hero({ onOpenCvModal }) {
                 title="Dimas Ars on GitHub"
                 aria-label="GitHub Profile"
               >
-                <Github size={20} />
+                <GithubIcon size={20} />
               </a>
 
               <a
@@ -89,7 +90,7 @@ export default function Hero({ onOpenCvModal }) {
                 title="Dimas Ars on LinkedIn"
                 aria-label="LinkedIn Profile"
               >
-                <Linkedin size={20} />
+                <LinkedinIcon size={20} />
               </a>
 
               <a
