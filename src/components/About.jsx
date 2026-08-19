@@ -58,8 +58,8 @@ export default function About() {
             </div>
 
             {/* Quick Meta Card */}
-            <div className="glass-card" style={{ padding: '1.5rem 2rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+            <div className="glass-card" style={{ padding: '1.5rem' }}>
+              <div className="about-meta-grid">
                 <div className="meta-item">
                   <div className="meta-icon">
                     <GraduationCap size={18} />

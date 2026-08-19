@@ -164,7 +164,7 @@ export default function Contact() {
             </p>
 
             <form onSubmit={handleSubmit} className="contact-form" id="contact-form">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="form-row-2col">
                 <div className="form-group">
                   <label htmlFor="name" className="form-label">Your Name *</label>
                   <input
