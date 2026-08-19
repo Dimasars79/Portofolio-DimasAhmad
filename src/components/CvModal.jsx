@@ -1,13 +1,10 @@
 import React from 'react';
 import { personalInfo, educationData, experienceData, skillsData } from '../data/portfolioData';
-import { X, Download, Printer, CheckCircle, Mail, MapPin, Linkedin, Github, FileText, ExternalLink } from 'lucide-react';
+import { X, Download, FileText, CheckCircle2 } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function CvModal({ isOpen, onClose }) {
   if (!isOpen) return null;
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
@@ -123,7 +120,7 @@ export default function CvModal({ isOpen, onClose }) {
         </div>
 
         {/* Footer Note */}
-        <div style={{ marginTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+        <div style={{ marginTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', flexWrap: 'wrap', gap: '0.5rem' }}>
           <span>💡 To replace with your official PDF resume file, simply place <code>Dimas_Ahmad_Noorsaid_CV.pdf</code> in the <code>public/</code> folder.</span>
           <button type="button" onClick={onClose} className="btn btn-secondary btn-sm">
             Close
