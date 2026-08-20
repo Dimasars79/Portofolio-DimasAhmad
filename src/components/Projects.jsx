@@ -8,7 +8,7 @@ export default function Projects({ onSelectProject }) {
     <section className="section" id="projects" style={{ background: 'var(--bg-surface)' }}>
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <FolderGit2 size={14} />
             <span>Engineering Portfolio</span>
@@ -21,13 +21,13 @@ export default function Projects({ onSelectProject }) {
 
         {/* Projects Cards Grid */}
         <div className="projects-grid">
-          {projectsData.map((project) => (
-            <div key={project.id} className="project-card">
+          {projectsData.map((project, idx) => (
+            <div key={project.id} className={`project-card reveal-on-scroll reveal-delay-${idx + 1} project-card-interactive`}>
               <div>
                 {/* Category & Badge */}
                 <div className="project-top">
                   <span className="project-category">{project.category}</span>
-                  <span className="tag tag-accent" style={{ fontSize: '0.75rem' }}>
+                  <span className="tag tag-accent pill-interactive" style={{ fontSize: '0.75rem' }}>
                     {project.badge}
                   </span>
                 </div>
@@ -46,7 +46,7 @@ export default function Projects({ onSelectProject }) {
                   </div>
                   <ul className="project-features-list">
                     {project.keyFeatures.map((feat, fIdx) => (
-                      <li key={fIdx}>
+                      <li key={fIdx} className="feature-item-interactive">
                         <CheckCircle2 size={15} />
                         <div>
                           <strong style={{ color: 'var(--text-primary)' }}>{feat.title}: </strong>
@@ -60,7 +60,7 @@ export default function Projects({ onSelectProject }) {
                 {/* Tech Stack Tags */}
                 <div className="project-tech-tags">
                   {project.technologies.map((tech, tIdx) => (
-                    <span key={tIdx} className="tag tag-indigo" style={{ fontSize: '0.78rem' }}>
+                    <span key={tIdx} className="tag tag-indigo pill-interactive" style={{ fontSize: '0.78rem' }}>
                       {tech}
                     </span>
                   ))}
@@ -71,7 +71,7 @@ export default function Projects({ onSelectProject }) {
               <div className="project-actions">
                 <button
                   type="button"
-                  className="btn btn-secondary btn-sm"
+                  className="btn btn-secondary btn-sm btn-interactive"
                   onClick={() => onSelectProject(project)}
                   id={`btn-view-details-${project.id}`}
                 >
@@ -84,12 +84,12 @@ export default function Projects({ onSelectProject }) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline btn-sm"
+                    className="btn btn-outline btn-sm btn-interactive"
                     id={`btn-github-${project.id}`}
                   >
                     <GithubIcon size={15} />
                     <span>GitHub Profile</span>
-                    <ArrowUpRight size={14} />
+                    <ArrowUpRight size={14} className="icon-arrow-tilt" />
                   </a>
                 ) : (
                   <span

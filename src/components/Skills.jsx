@@ -40,7 +40,7 @@ export default function Skills() {
     <section className="section" id="skills">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <Layers size={14} />
             <span>Skill Matrix</span>
@@ -52,7 +52,7 @@ export default function Skills() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="skills-filter">
+        <div className="skills-filter reveal-on-scroll reveal-delay-1">
           {skillsData.categories.map((cat) => {
             const count = cat.id === 'all' 
               ? skillsData.items.length 
@@ -74,13 +74,13 @@ export default function Skills() {
         </div>
 
         {/* Skills Cards Grid */}
-        <div className="skills-grid">
+        <div className="skills-grid reveal-on-scroll reveal-delay-2">
           {filteredSkills.map((skill, idx) => (
-            <div key={idx} className="skill-card">
+            <div key={idx} className="skill-card skill-card-interactive">
               <div>
                 <div className="skill-card-top">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <div style={{ color: 'var(--accent-cyan)' }}>
+                    <div style={{ color: 'var(--accent-cyan)' }} className="skill-icon-wrap">
                       {getCategoryIcon(skill.category)}
                     </div>
                     <h3 className="skill-name">{skill.name}</h3>
@@ -105,6 +105,7 @@ export default function Skills() {
 
         {/* Realistic Disclaimer note */}
         <div 
+          className="reveal-on-scroll reveal-delay-3"
           style={{
             marginTop: '2.5rem',
             textAlign: 'center',

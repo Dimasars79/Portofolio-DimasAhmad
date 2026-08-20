@@ -1,6 +1,6 @@
 import React from 'react';
 import { learningJourneyData } from '../data/portfolioData';
-import { Sparkles, Headphones, FileCheck, GitBranch, Network, Wrench, ArrowRight } from 'lucide-react';
+import { Sparkles, Headphones, FileCheck, GitBranch, Network, Wrench } from 'lucide-react';
 
 export default function LearningJourney() {
   const iconMap = {
@@ -15,7 +15,7 @@ export default function LearningJourney() {
     <section className="section" id="learning">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <Sparkles size={14} />
             <span>Continuous Development</span>
@@ -28,10 +28,10 @@ export default function LearningJourney() {
 
         {/* Learning Cards Grid */}
         <div className="learning-grid">
-          {learningJourneyData.map((item) => (
-            <div key={item.id} className="learning-card">
+          {learningJourneyData.map((item, idx) => (
+            <div key={item.id} className={`learning-card reveal-on-scroll reveal-delay-${(idx % 3) + 1} learning-card-interactive`}>
               <div className="learning-header">
-                <div className="learning-icon">
+                <div className="learning-icon learning-icon-bounce">
                   {iconMap[item.icon] || <Wrench size={22} />}
                 </div>
                 <div>

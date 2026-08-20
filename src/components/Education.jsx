@@ -7,7 +7,7 @@ export default function Education() {
     <section className="section" id="education">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <GraduationCap size={14} />
             <span>Academic Background</span>
@@ -21,7 +21,7 @@ export default function Education() {
         {/* Education Timeline Cards */}
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
           {educationData.map((edu, idx) => (
-            <div key={idx} className="timeline-card">
+            <div key={idx} className="timeline-card reveal-on-scroll reveal-delay-1 timeline-interactive">
               <div className="timeline-header">
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
@@ -64,7 +64,7 @@ export default function Education() {
 
                 <div className="coursework-grid">
                   {edu.relevantCoursework.map((course, cIdx) => (
-                    <div key={cIdx} className="coursework-item">
+                    <div key={cIdx} className="coursework-item coursework-interactive">
                       <CheckCircle2 size={14} />
                       <span>{course}</span>
                     </div>
@@ -78,7 +78,7 @@ export default function Education() {
                   Competencies:
                 </span>
                 {edu.skillsAcquired.map((skill, sIdx) => (
-                  <span key={sIdx} className="tag tag-indigo" style={{ fontSize: '0.78rem' }}>
+                  <span key={sIdx} className="tag tag-indigo pill-interactive" style={{ fontSize: '0.78rem' }}>
                     {skill}
                   </span>
                 ))}

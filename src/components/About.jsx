@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo, aboutData } from '../data/portfolioData';
-import { Cpu, TrendingUp, Layers, Sparkles, GraduationCap, MapPin, CheckCircle, Mail, Globe } from 'lucide-react';
+import { Cpu, TrendingUp, Layers, Sparkles, GraduationCap, MapPin, CheckCircle, Mail } from 'lucide-react';
 
 export default function About() {
   const iconMap = {
@@ -14,7 +14,7 @@ export default function About() {
     <section className="section" id="about" style={{ background: 'var(--bg-surface)' }}>
       <div className="container">
         {/* Section Heading */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <Cpu size={14} />
             <span>Profile Overview</span>
@@ -29,7 +29,7 @@ export default function About() {
         <div className="about-grid">
           {/* Left: Narrative & Key Strengths */}
           <div className="about-narrative">
-            <div className="glass-card">
+            <div className="glass-card reveal-on-scroll">
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>
                 Engineering Mindset & Systematic Approach
               </h3>
@@ -48,7 +48,7 @@ export default function About() {
                 </h4>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {aboutData.keyAttributes.map((attr, idx) => (
-                    <span key={idx} className="tag tag-accent" style={{ fontSize: '0.8rem' }}>
+                    <span key={idx} className="tag tag-accent pill-interactive" style={{ fontSize: '0.8rem' }}>
                       <CheckCircle size={12} style={{ color: 'var(--accent-cyan)' }} />
                       {attr}
                     </span>
@@ -58,9 +58,9 @@ export default function About() {
             </div>
 
             {/* Quick Meta Card */}
-            <div className="glass-card" style={{ padding: '1.5rem' }}>
+            <div className="glass-card reveal-on-scroll reveal-delay-2" style={{ padding: '1.5rem' }}>
               <div className="about-meta-grid">
-                <div className="meta-item">
+                <div className="meta-item meta-item-interactive">
                   <div className="meta-icon">
                     <GraduationCap size={18} />
                   </div>
@@ -70,7 +70,7 @@ export default function About() {
                   </div>
                 </div>
 
-                <div className="meta-item">
+                <div className="meta-item meta-item-interactive">
                   <div className="meta-icon">
                     <MapPin size={18} />
                   </div>
@@ -80,7 +80,7 @@ export default function About() {
                   </div>
                 </div>
 
-                <div className="meta-item">
+                <div className="meta-item meta-item-interactive">
                   <div className="meta-icon">
                     <Layers size={18} />
                   </div>
@@ -90,7 +90,7 @@ export default function About() {
                   </div>
                 </div>
 
-                <div className="meta-item">
+                <div className="meta-item meta-item-interactive">
                   <div className="meta-icon">
                     <Mail size={18} />
                   </div>
@@ -105,13 +105,13 @@ export default function About() {
 
           {/* Right: 4 Focus Pillars */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+            <h3 className="reveal-on-scroll" style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
               Key Areas of Interest & Practice
             </h3>
 
             <div className="about-pillars-grid">
               {aboutData.pillars.map((pillar, idx) => (
-                <div key={idx} className="pillar-card">
+                <div key={idx} className={`pillar-card reveal-on-scroll reveal-delay-${idx + 1}`}>
                   <div className="pillar-icon">
                     {iconMap[pillar.icon] || <Cpu size={20} />}
                   </div>
@@ -123,6 +123,7 @@ export default function About() {
 
             {/* Quote Card */}
             <div 
+              className="reveal-on-scroll reveal-delay-3 quote-card-interactive"
               style={{
                 marginTop: 'auto',
                 padding: '1.5rem',

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, MapPin, ArrowRight, Download, CheckCircle2, Sparkles } from 'lucide-react';
+import { Mail, MapPin, ArrowRight, Download, CheckCircle2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 
 export default function Hero({ onOpenCvModal }) {
@@ -65,13 +65,13 @@ export default function Hero({ onOpenCvModal }) {
           {/* Left Column: Narrative & Call to Actions */}
           <div className="hero-content">
             {/* Status & Location Badge */}
-            <div className="hero-status" id="hero-status-badge">
+            <div className="hero-status hero-entrance-1" id="hero-status-badge">
               <span className="status-dot"></span>
               <span>Available for Opportunities • {personalInfo.location}</span>
             </div>
 
             {/* Animated Headline */}
-            <h1 className="hero-title">
+            <h1 className="hero-title hero-entrance-2">
               <span className="hero-greeting-line">
                 Hello, I'm <span className="wave-emoji" role="img" aria-label="waving hand">👋</span>
               </span>
@@ -84,7 +84,7 @@ export default function Hero({ onOpenCvModal }) {
             </h1>
 
             {/* Subtitle */}
-            <div className="hero-subtitle">
+            <div className="hero-subtitle hero-entrance-3">
               <span>Computer Engineering Graduate</span>
               <span className="hero-subtitle-highlight">|</span>
               <span>IT Support</span>
@@ -93,35 +93,35 @@ export default function Hero({ onOpenCvModal }) {
             </div>
 
             {/* Short Intro */}
-            <p className="hero-description">
+            <p className="hero-description hero-entrance-4">
               {personalInfo.bioShort}
             </p>
 
             {/* CTA Buttons */}
-            <div className="hero-actions">
+            <div className="hero-actions hero-entrance-5">
               <a
                 href="#projects"
                 onClick={scrollToProjects}
-                className="btn btn-primary"
+                className="btn btn-primary btn-interactive"
                 id="cta-view-projects"
               >
                 <span>View My Projects</span>
-                <ArrowRight size={18} />
+                <ArrowRight size={18} className="btn-icon-arrow" />
               </a>
 
               <button
                 type="button"
                 onClick={onOpenCvModal}
-                className="btn btn-secondary"
+                className="btn btn-secondary btn-interactive"
                 id="cta-download-cv"
               >
-                <Download size={18} />
+                <Download size={18} className="btn-icon-bounce" />
                 <span>Download CV</span>
               </button>
             </div>
 
             {/* Social & Contact Direct Links */}
-            <div className="hero-socials">
+            <div className="hero-socials hero-entrance-6">
               <a
                 href={personalInfo.github}
                 target="_blank"
@@ -164,8 +164,8 @@ export default function Hero({ onOpenCvModal }) {
           </div>
 
           {/* Right Column: Interactive Profile & Tech Card */}
-          <div className="hero-visual">
-            <div className="hero-card">
+          <div className="hero-visual hero-entrance-card">
+            <div className="hero-card hero-floating-card">
               {/* Profile Avatar / Real Photo */}
               <div className="hero-avatar-wrapper">
                 <div className="hero-avatar" title="Dimas Ahmad Noorsaid">
@@ -188,19 +188,19 @@ export default function Hero({ onOpenCvModal }) {
 
               {/* Quick Highlights Grid */}
               <div className="hero-stats-grid">
-                <div className="hero-stat-item">
+                <div className="hero-stat-item stat-item-interactive">
                   <div className="stat-label">Focus Areas</div>
                   <div className="stat-value" style={{ color: 'var(--accent-cyan)' }}>IT Support & BA</div>
                 </div>
-                <div className="hero-stat-item">
+                <div className="hero-stat-item stat-item-interactive">
                   <div className="stat-label">Modeling Tool</div>
                   <div className="stat-value" style={{ color: 'var(--accent-indigo)' }}>Sparx EA / BPMN</div>
                 </div>
-                <div className="hero-stat-item">
+                <div className="hero-stat-item stat-item-interactive">
                   <div className="stat-label">IoT Tech</div>
                   <div className="stat-value" style={{ color: 'var(--accent-emerald)' }}>ESP32 & Sensors</div>
                 </div>
-                <div className="hero-stat-item">
+                <div className="hero-stat-item stat-item-interactive">
                   <div className="stat-label">Base Location</div>
                   <div className="stat-value">Jakarta, ID</div>
                 </div>
@@ -208,11 +208,11 @@ export default function Hero({ onOpenCvModal }) {
 
               {/* Tech Pills */}
               <div className="hero-tech-pills">
-                <span className="tag tag-accent">IT Support</span>
-                <span className="tag tag-indigo">Business Analysis</span>
-                <span className="tag">Sparx EA</span>
-                <span className="tag">Networking</span>
-                <span className="tag tag-success">Git & GitHub</span>
+                <span className="tag tag-accent pill-interactive">IT Support</span>
+                <span className="tag tag-indigo pill-interactive">Business Analysis</span>
+                <span className="tag pill-interactive">Sparx EA</span>
+                <span className="tag pill-interactive">Networking</span>
+                <span className="tag tag-success pill-interactive">Git & GitHub</span>
               </div>
             </div>
           </div>

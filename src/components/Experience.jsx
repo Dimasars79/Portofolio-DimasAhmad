@@ -1,13 +1,13 @@
 import React from 'react';
 import { experienceData } from '../data/portfolioData';
-import { Briefcase, Calendar, MapPin, Building, CheckCircle2, Award, Terminal } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Building } from 'lucide-react';
 
 export default function Experience() {
   return (
     <section className="section" id="experience" style={{ background: 'var(--bg-surface)' }}>
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <Briefcase size={14} />
             <span>Professional Experience</span>
@@ -21,7 +21,7 @@ export default function Experience() {
         {/* Experience Timeline */}
         <div style={{ maxWidth: '960px', margin: '0 auto' }}>
           {experienceData.map((exp, idx) => (
-            <div key={idx} className="timeline-card">
+            <div key={idx} className="timeline-card reveal-on-scroll reveal-delay-1 timeline-interactive">
               <div className="timeline-header">
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
@@ -70,7 +70,7 @@ export default function Experience() {
                   Key Tools & Methods:
                 </span>
                 {exp.toolsUsed.map((tool, tIdx) => (
-                  <span key={tIdx} className="tag tag-accent" style={{ fontSize: '0.8rem', fontWeight: 600 }}>
+                  <span key={tIdx} className="tag tag-accent pill-interactive" style={{ fontSize: '0.8rem', fontWeight: 600 }}>
                     {tool}
                   </span>
                 ))}

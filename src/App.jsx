@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CvModal from './components/CvModal';
 import ProjectModal from './components/ProjectModal';
+import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
   const [isCvModalOpen, setIsCvModalOpen] = useState(false);
@@ -28,6 +29,9 @@ export default function App() {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('dimas-portfolio-theme', theme);
   }, [theme]);
+
+  // Activate scroll-reveal animations across sections
+  useScrollReveal();
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
