@@ -48,7 +48,7 @@ export default function Contact() {
     <section className="section" id="contact" style={{ background: 'var(--bg-surface)' }}>
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-badge">
             <Mail size={14} />
             <span>Get in Touch</span>
@@ -62,7 +62,7 @@ export default function Contact() {
         {/* Contact Grid */}
         <div className="contact-grid">
           {/* Left: Contact Channels & Direct Links */}
-          <div className="contact-info-card">
+          <div className="contact-info-card reveal-on-scroll reveal-delay-1">
             <div className="glass-card">
               <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
                 Reach Out Directly
@@ -73,7 +73,7 @@ export default function Contact() {
 
               <div className="contact-channels">
                 {/* Email Item */}
-                <div className="contact-channel-item">
+                <div className="contact-channel-item channel-item-interactive">
                   <div className="channel-left">
                     <div className="channel-icon">
                       <Mail size={18} />
@@ -86,7 +86,7 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="btn btn-secondary btn-sm"
+                    className="btn btn-secondary btn-sm btn-interactive"
                     style={{ padding: '0.4rem 0.75rem' }}
                     title="Copy email to clipboard"
                     id="btn-copy-email"
@@ -101,7 +101,7 @@ export default function Contact() {
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="contact-channel-item"
+                  className="contact-channel-item channel-item-interactive"
                   id="contact-linkedin-link"
                 >
                   <div className="channel-left">
@@ -113,7 +113,7 @@ export default function Contact() {
                       <div className="channel-value">linkedin.com/in/dimasars</div>
                     </div>
                   </div>
-                  <ExternalLink size={16} style={{ color: 'var(--text-muted)' }} />
+                  <ExternalLink size={16} className="icon-arrow-tilt" style={{ color: 'var(--text-muted)' }} />
                 </a>
 
                 {/* GitHub Item */}
@@ -121,7 +121,7 @@ export default function Contact() {
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="contact-channel-item"
+                  className="contact-channel-item channel-item-interactive"
                   id="contact-github-link"
                 >
                   <div className="channel-left">
@@ -133,11 +133,11 @@ export default function Contact() {
                       <div className="channel-value">github.com/Dimasars79</div>
                     </div>
                   </div>
-                  <ExternalLink size={16} style={{ color: 'var(--text-muted)' }} />
+                  <ExternalLink size={16} className="icon-arrow-tilt" style={{ color: 'var(--text-muted)' }} />
                 </a>
 
                 {/* Location Item */}
-                <div className="contact-channel-item">
+                <div className="contact-channel-item channel-item-interactive">
                   <div className="channel-left">
                     <div className="channel-icon" style={{ color: 'var(--accent-emerald)', background: 'rgba(52, 211, 153, 0.1)' }}>
                       <MapPin size={18} />
@@ -147,14 +147,14 @@ export default function Contact() {
                       <div className="channel-value">{personalInfo.location}</div>
                     </div>
                   </div>
-                  <span className="tag tag-success" style={{ fontSize: '0.72rem' }}>Available</span>
+                  <span className="tag tag-success pill-interactive" style={{ fontSize: '0.72rem' }}>Available</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: Interactive Message Composer Form */}
-          <div className="glass-card">
+          <div className="glass-card reveal-on-scroll reveal-delay-2">
             <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <MessageSquare size={18} style={{ color: 'var(--accent-cyan)' }} />
               <span>Send a Message</span>
@@ -229,11 +229,11 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-primary btn-interactive"
                 id="btn-submit-contact"
                 style={{ width: '100%' }}
               >
-                <Send size={16} />
+                <Send size={16} className="btn-icon-send" />
                 <span>Compose Email to Dimas</span>
               </button>
             </form>

@@ -1,6 +1,6 @@
 /* ==========================================================================
    DIMAS AHMAD NOORSAID (DIMAS ARS) - PORTFOLIO DESIGN SYSTEM
-   Modern Dark & Light Themes | Mobile-First Responsive Design | Glassmorphism
+   Modern Dark & Light Themes | Mobile-First Responsive Design | Smooth Animations
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -112,6 +112,7 @@
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* --------------------------------------------------------------------------
@@ -121,7 +122,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  min-width: 0; /* Prevents flex/grid overflow bugs */
+  min-width: 0;
 }
 
 html {
@@ -197,7 +198,7 @@ a {
 
 button, input, textarea, select {
   font-family: inherit;
-  font-size: 1rem; /* >=16px prevents iOS Safari auto-zoom */
+  font-size: 1rem;
 }
 
 img, svg {
@@ -226,13 +227,13 @@ img, svg {
 }
 
 .section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
   position: relative;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 6rem 0;
+    padding: 6.5rem 0;
   }
 }
 
@@ -262,6 +263,12 @@ img, svg {
   color: var(--accent-cyan);
   border: 1px solid var(--border-accent);
   margin-bottom: 0.85rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.section-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
 }
 
 .section-title {
@@ -303,7 +310,7 @@ img, svg {
   box-shadow: var(--shadow-md), var(--glow-cyan);
 }
 
-/* Buttons */
+/* Buttons & Interactive Micro-Animations */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -318,8 +325,14 @@ img, svg {
   transition: all var(--transition-base);
   text-align: center;
   white-space: nowrap;
-  min-height: 44px; /* Touch friendly */
+  min-height: 44px;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-interactive:active {
+  transform: scale(0.97);
 }
 
 .btn-primary {
@@ -334,9 +347,30 @@ img, svg {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(56, 189, 248, 0.45);
   filter: brightness(1.08);
+}
+
+.btn-icon-arrow {
+  transition: transform var(--transition-fast);
+}
+.btn-primary:hover .btn-icon-arrow {
+  transform: translateX(4px);
+}
+
+.btn-icon-bounce {
+  transition: transform var(--transition-fast);
+}
+.btn:hover .btn-icon-bounce {
+  transform: translateY(2px);
+}
+
+.btn-icon-send {
+  transition: transform var(--transition-fast);
+}
+.btn:hover .btn-icon-send {
+  transform: rotate(12deg) scale(1.1);
 }
 
 .btn-secondary {
@@ -354,7 +388,8 @@ img, svg {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .btn-outline {
@@ -367,6 +402,7 @@ img, svg {
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
   background: rgba(56, 189, 248, 0.08);
+  transform: translateY(-2px);
 }
 
 .btn-sm {
@@ -376,7 +412,7 @@ img, svg {
   border-radius: var(--radius-sm);
 }
 
-/* Badges & Tags */
+/* Badges & Tags with Micro-Hover */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -388,10 +424,17 @@ img, svg {
   font-size: 0.78rem;
   color: var(--text-secondary);
   font-family: var(--font-sans);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 [data-theme="light"] .tag {
   background: rgba(15, 23, 42, 0.03);
+}
+
+.pill-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
 }
 
 .tag-accent {
@@ -413,7 +456,42 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   4. NAVBAR & THEME TOGGLE (RESPONSIVE)
+   4. SCROLL-REVEAL ANIMATION SYSTEM
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+  transition-delay: 0.5s;
+}
+
+/* --------------------------------------------------------------------------
+   5. NAVBAR & THEME TOGGLE (RESPONSIVE)
    -------------------------------------------------------------------------- */
 .navbar-wrapper {
   position: fixed;
@@ -450,6 +528,11 @@ img, svg {
   font-weight: 800;
   color: var(--text-primary);
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.nav-brand:hover {
+  transform: scale(1.02);
 }
 
 .brand-logo {
@@ -464,6 +547,11 @@ img, svg {
   font-weight: 800;
   font-size: 1.05rem;
   box-shadow: var(--glow-cyan);
+  transition: transform var(--transition-fast);
+}
+
+.nav-brand:hover .brand-logo {
+  transform: rotate(-6deg) scale(1.05);
 }
 
 .brand-title {
@@ -500,19 +588,25 @@ img, svg {
   padding: 0.25rem 0;
 }
 
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+  transform: translateX(-50%);
+}
+
 .nav-link:hover, .nav-link.active {
   color: var(--accent-cyan);
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--accent-cyan);
-  border-radius: var(--radius-full);
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
 }
 
 .nav-actions {
@@ -545,7 +639,7 @@ img, svg {
   background: rgba(56, 189, 248, 0.15);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  transform: rotate(15deg) scale(1.05);
+  transform: rotate(25deg) scale(1.08);
 }
 
 .mobile-menu-btn {
@@ -559,6 +653,12 @@ img, svg {
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.mobile-menu-btn:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 [data-theme="light"] .mobile-menu-btn {
@@ -624,6 +724,7 @@ img, svg {
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
   }
 
   .mobile-nav-links a.active {
@@ -633,7 +734,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   5. HERO SECTION (FLUID & MOBILE-FIRST)
+   6. HERO SECTION & ENTRANCE ANIMATIONS
    -------------------------------------------------------------------------- */
 .hero-section {
   min-height: 100vh;
@@ -673,6 +774,68 @@ img, svg {
   }
 }
 
+/* Staggered Hero Entrance Animations */
+.hero-entrance-1 {
+  animation: heroFadeDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-entrance-2 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-entrance-3 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-entrance-4 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero-entrance-5 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.hero-entrance-6 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+.hero-entrance-card {
+  animation: heroScaleUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+@keyframes heroFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .hero-status {
   display: inline-flex;
   align-items: center;
@@ -685,6 +848,11 @@ img, svg {
   font-size: 0.8rem;
   font-weight: 600;
   width: fit-content;
+  transition: transform var(--transition-fast);
+}
+
+.hero-status:hover {
+  transform: translateY(-2px);
 }
 
 .status-dot {
@@ -880,10 +1048,11 @@ img, svg {
   background: rgba(56, 189, 248, 0.15);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
 }
 
-/* Hero Tech Visual Card */
+/* Hero Tech Visual Card & Ambient Float */
 .hero-visual {
   position: relative;
   display: flex;
@@ -901,6 +1070,20 @@ img, svg {
   box-shadow: var(--shadow-lg), var(--glow-cyan);
   position: relative;
   backdrop-filter: blur(20px);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-floating-card {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @media (min-width: 768px) {
@@ -935,6 +1118,11 @@ img, svg {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: box-shadow var(--transition-base);
+}
+
+.hero-avatar:hover {
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.5);
 }
 
 .hero-avatar-img {
@@ -964,6 +1152,11 @@ img, svg {
   color: var(--accent-emerald);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   z-index: 2;
+  transition: transform var(--transition-fast);
+}
+
+.avatar-badge:hover {
+  transform: scale(1.15) rotate(8deg);
 }
 
 .hero-card-name {
@@ -993,6 +1186,13 @@ img, svg {
   border-radius: var(--radius-md);
   padding: 0.65rem;
   text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.stat-item-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
 }
 
 [data-theme="light"] .hero-stat-item {
@@ -1021,7 +1221,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   6. ABOUT ME SECTION
+   7. ABOUT ME SECTION
    -------------------------------------------------------------------------- */
 .about-grid {
   display: grid;
@@ -1071,7 +1271,8 @@ img, svg {
 .pillar-card:hover {
   border-color: var(--border-accent);
   background: var(--bg-card-hover);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .pillar-icon {
@@ -1084,6 +1285,11 @@ img, svg {
   align-items: center;
   justify-content: center;
   margin-bottom: 0.75rem;
+  transition: transform var(--transition-fast);
+}
+
+.pillar-card:hover .pillar-icon {
+  transform: scale(1.12) rotate(6deg);
 }
 
 .pillar-title {
@@ -1121,6 +1327,11 @@ img, svg {
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
+  transition: transform var(--transition-fast);
+}
+
+.meta-item-interactive:hover {
+  transform: translateX(4px);
 }
 
 .meta-icon {
@@ -1133,6 +1344,11 @@ img, svg {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.meta-item-interactive:hover .meta-icon {
+  transform: scale(1.1);
 }
 
 .meta-label {
@@ -1148,8 +1364,17 @@ img, svg {
   color: var(--text-primary);
 }
 
+.quote-card-interactive {
+  transition: all var(--transition-base);
+}
+
+.quote-card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+}
+
 /* --------------------------------------------------------------------------
-   7. EDUCATION & EXPERIENCE TIMELINES
+   8. EDUCATION & EXPERIENCE TIMELINES
    -------------------------------------------------------------------------- */
 .timeline-card {
   position: relative;
@@ -1169,9 +1394,10 @@ img, svg {
   }
 }
 
-.timeline-card:hover {
+.timeline-interactive:hover {
   border-color: var(--border-accent);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(56, 189, 248, 0.15);
+  transform: translateY(-3px);
 }
 
 .timeline-header {
@@ -1232,6 +1458,12 @@ img, svg {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.timeline-responsibilities li:hover {
+  color: var(--text-primary);
+  transform: translateX(3px);
 }
 
 .timeline-responsibilities li::before {
@@ -1266,19 +1498,31 @@ img, svg {
   border-radius: var(--radius-sm);
   font-size: 0.82rem;
   color: var(--text-secondary);
+  transition: all var(--transition-fast);
 }
 
 [data-theme="light"] .coursework-item {
   background: rgba(15, 23, 42, 0.03);
 }
 
+.coursework-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+  color: var(--text-primary);
+}
+
 .coursework-item svg {
   color: var(--accent-cyan);
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.coursework-interactive:hover svg {
+  transform: scale(1.15);
 }
 
 /* --------------------------------------------------------------------------
-   8. SKILLS SECTION (TOUCH-FRIENDLY)
+   9. SKILLS SECTION (TOUCH-FRIENDLY & HOVER INTERACTIONS)
    -------------------------------------------------------------------------- */
 .skills-filter {
   display: flex;
@@ -1309,6 +1553,7 @@ img, svg {
 .filter-btn:hover {
   color: var(--text-primary);
   border-color: var(--border-medium);
+  transform: translateY(-2px);
 }
 
 .filter-btn.active {
@@ -1316,6 +1561,7 @@ img, svg {
   color: #FFFFFF;
   border-color: var(--accent-cyan);
   box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+  transform: translateY(-2px);
 }
 
 [data-theme="dark"] .filter-btn.active {
@@ -1346,11 +1592,19 @@ img, svg {
   justify-content: space-between;
 }
 
-.skill-card:hover {
+.skill-card-interactive:hover {
   border-color: var(--border-accent);
   background: var(--bg-card-hover);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md), 0 0 16px rgba(56, 189, 248, 0.15);
+}
+
+.skill-icon-wrap {
+  transition: transform var(--transition-fast);
+}
+
+.skill-card-interactive:hover .skill-icon-wrap {
+  transform: scale(1.2);
 }
 
 .skill-card-top {
@@ -1375,6 +1629,11 @@ img, svg {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.skill-card-interactive:hover .skill-badge {
+  transform: scale(1.05);
 }
 
 .badge-intermediate {
@@ -1402,7 +1661,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   9. FEATURED PROJECTS
+   10. FEATURED PROJECTS
    -------------------------------------------------------------------------- */
 .projects-grid {
   display: grid;
@@ -1425,7 +1684,7 @@ img, svg {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all var(--transition-base);
+  transition: all var(--transition-smooth);
   position: relative;
 }
 
@@ -1435,10 +1694,10 @@ img, svg {
   }
 }
 
-.project-card:hover {
+.project-card-interactive:hover {
   border-color: var(--border-accent);
   box-shadow: var(--shadow-lg), var(--glow-cyan);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .project-top {
@@ -1463,6 +1722,11 @@ img, svg {
   font-weight: 700;
   margin-bottom: 0.5rem;
   line-height: 1.3;
+  transition: color var(--transition-fast);
+}
+
+.project-card-interactive:hover .project-title {
+  color: var(--accent-cyan);
 }
 
 .project-overview {
@@ -1486,6 +1750,11 @@ img, svg {
   gap: 0.45rem;
   font-size: 0.83rem;
   color: var(--text-secondary);
+  transition: transform var(--transition-fast);
+}
+
+.feature-item-interactive:hover {
+  transform: translateX(4px);
 }
 
 .project-features-list li svg {
@@ -1511,6 +1780,14 @@ img, svg {
   flex-wrap: wrap;
 }
 
+.icon-arrow-tilt {
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover .icon-arrow-tilt {
+  transform: translate(2px, -2px);
+}
+
 @media (max-width: 480px) {
   .project-actions .btn {
     width: 100%;
@@ -1518,7 +1795,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   10. TECHNICAL LEARNING JOURNEY
+   11. TECHNICAL LEARNING JOURNEY
    -------------------------------------------------------------------------- */
 .learning-grid {
   display: grid;
@@ -1547,10 +1824,11 @@ img, svg {
   }
 }
 
-.learning-card:hover {
+.learning-card-interactive:hover {
   border-color: var(--border-accent);
   background: var(--bg-card-hover);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .learning-header {
@@ -1570,6 +1848,11 @@ img, svg {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.learning-card-interactive:hover .learning-icon-bounce {
+  transform: rotate(8deg) scale(1.1);
 }
 
 .learning-title {
@@ -1605,6 +1888,12 @@ img, svg {
   display: flex;
   align-items: center;
   gap: 0.45rem;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.learning-topics-list li:hover {
+  transform: translateX(3px);
+  color: var(--text-primary);
 }
 
 .learning-topics-list li::before {
@@ -1614,7 +1903,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   11. CONTACT SECTION
+   12. CONTACT SECTION
    -------------------------------------------------------------------------- */
 .contact-grid {
   display: grid;
@@ -1659,9 +1948,10 @@ img, svg {
   background: rgba(15, 23, 42, 0.02);
 }
 
-.contact-channel-item:hover {
+.channel-item-interactive:hover {
   border-color: var(--border-accent);
   background: rgba(255, 255, 255, 0.06);
+  transform: translateX(4px);
 }
 
 .channel-left {
@@ -1681,6 +1971,11 @@ img, svg {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.channel-item-interactive:hover .channel-icon {
+  transform: scale(1.1);
 }
 
 .channel-title {
@@ -1737,7 +2032,7 @@ img, svg {
   color: var(--text-primary);
   outline: none;
   transition: all var(--transition-fast);
-  font-size: 1rem; /* iOS no-zoom */
+  font-size: 1rem;
 }
 
 [data-theme="light"] .form-input, 
@@ -1748,6 +2043,7 @@ img, svg {
 .form-input:focus, .form-textarea:focus {
   border-color: var(--accent-cyan);
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  transform: translateY(-1px);
 }
 
 .form-input::placeholder, .form-textarea::placeholder {
@@ -1760,7 +2056,7 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   12. MODALS (RESPONSIVE)
+   13. MODALS (RESPONSIVE)
    -------------------------------------------------------------------------- */
 .modal-overlay {
   position: fixed;
@@ -1773,7 +2069,7 @@ img, svg {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.25s ease-out;
 }
 
 .modal-content {
@@ -1787,7 +2083,7 @@ img, svg {
   padding: 1.5rem;
   box-shadow: var(--shadow-lg), var(--glow-cyan);
   position: relative;
-  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 768px) {
@@ -1816,6 +2112,7 @@ img, svg {
 .modal-close-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
+  transform: rotate(90deg) scale(1.1);
 }
 
 @keyframes fadeIn {
@@ -1824,12 +2121,12 @@ img, svg {
 }
 
 @keyframes scaleUp {
-  from { transform: scale(0.94); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from { transform: scale(0.92) translateY(15px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 /* --------------------------------------------------------------------------
-   13. FOOTER
+   14. FOOTER
    -------------------------------------------------------------------------- */
 .footer-section {
   padding: 3.5rem 0 2rem 0;
@@ -1877,11 +2174,13 @@ img, svg {
 .footer-links a {
   font-size: 0.85rem;
   color: var(--text-secondary);
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
+  display: inline-block;
 }
 
 .footer-links a:hover {
   color: var(--accent-cyan);
+  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -1928,9 +2227,29 @@ img, svg {
 .back-to-top-btn:hover {
   background: var(--accent-cyan);
   color: #FFFFFF;
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
 }
 
 [data-theme="dark"] .back-to-top-btn:hover {
   color: #070B14;
+}
+
+/* --------------------------------------------------------------------------
+   15. ACCESSIBILITY: PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-floating-card {
+    animation: none !important;
+  }
 }
